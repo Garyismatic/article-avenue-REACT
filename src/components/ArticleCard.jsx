@@ -1,7 +1,9 @@
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import './CSS-modules/articleCard.css'
 
 function ArticleCard({ article }) {
   return (
+    <section className="article-card">
     <Card sx={{ maxWidth: 500 }}>
       <CardMedia
         sx={{ height: 180 }}
@@ -14,6 +16,7 @@ function ArticleCard({ article }) {
         </Typography>
       </CardContent>
     </Card>
+    </section>
   );
 }
 
