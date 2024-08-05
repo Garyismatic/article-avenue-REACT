@@ -1,0 +1,11 @@
+.article-card{
+    margin: 20px;
+    height: fit-content;
+    width: 500px;
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 12px;
+}

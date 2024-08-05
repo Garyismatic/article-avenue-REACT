@@ -1,7 +1,13 @@
+import Header from "./components/Header";
+import Feed from "./components/Feed";
+
 function App() {
-  return 
-  <>
-  </>;
+  return (
+    <>
+      <Header />
+      <Feed />
+    </>
+  );
 }
 
 export default App;
