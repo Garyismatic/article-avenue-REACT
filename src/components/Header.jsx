@@ -1,5 +1,5 @@
 import NavMenu from "./NavMenu";
-import './components-CSS/header.css'
+import './CSS-modules/header.css'
 
 function Header() {
   return (

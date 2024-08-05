@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import './CSS-modules/navmenu.css'
 
 function NavMenu() {
   const [open, setOpen] = useState(false);
@@ -22,6 +23,9 @@ function NavMenu() {
   const Menu = (
     <Box sx={{ width: 200 }} role="presentation" onClick={handleClick}>
       <List>
+        <div className="menu-header">
+          <ListItem key="menu-title">MENU</ListItem>
+        </div>
         {menuOptions.map((text) => {
           return (
             <ListItem key={text}>
