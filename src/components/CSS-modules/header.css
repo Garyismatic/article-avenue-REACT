@@ -2,11 +2,21 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: solid 3px grey;
-    padding: 20px;
+    border-bottom: solid 2px lightgray;
+    padding: 25px;
+    background-color: blue;
+    color: white;
+    font-size: larger;
+    font-family:sans-serif;
 }
 
 .header-title{
     margin: 0 auto; 
 }
 
+.nav-menu-button{
+    position: absolute;
+    border-radius: 100px;
+    border: lightgray 1px solid;
+    background-color: white;
+}

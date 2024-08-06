@@ -1,0 +1,16 @@
+.comment-card{
+    margin: 15px;
+}
+.comment-header{
+    padding: 0 10px;
+}
+
+.comment-body {
+    border: solid lightgray 2px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.comment-votes{
+    padding:10px; 
+}
