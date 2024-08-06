@@ -23,7 +23,7 @@ function ArticleById() {
     <>
     <div style={{margin: 15}}>
       <ArticleByIdHeader article={article} />
-      <ArticleActions article ={article} />
+      <ArticleActions article ={article} article_id={article_id}/>
       <ArticleByIdContent article={article} />
     </div>
     </>
