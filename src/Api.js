@@ -10,3 +10,16 @@ export const getArticles = () => {
   });
 };
 
+export const getArticleById = (article_id) => {
+  return api.get(`/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
+};
+
+export const updateArticleVotes = (article_id, votes) => {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes: votes })
+    .then(({ data }) => {
+      return data.articleUpdated;
+    });
+};

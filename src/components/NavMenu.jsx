@@ -9,7 +9,8 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import './CSS-modules/navmenu.css'
+import "./CSS-modules/navmenu.css";
+import { Link } from "react-router-dom";
 
 function NavMenu() {
   const [open, setOpen] = useState(false);
@@ -28,11 +29,13 @@ function NavMenu() {
         </div>
         {menuOptions.map((text) => {
           return (
-            <ListItem key={text}>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
+            <Link to={'/' + text.toLowerCase()} className="navmenu-link" key={text}>
+              <ListItem >
+                <ListItemButton>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
           );
         })}
       </List>
