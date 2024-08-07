@@ -23,3 +23,10 @@ export const updateArticleVotes = (article_id, votes) => {
       return data.articleUpdated;
     });
 };
+
+export const getArticleComments = (article_id) => {
+  return api.get(`/articles/${article_id}/comments`).then(({data}) => {
+    return data.comments
+  })
+}
+

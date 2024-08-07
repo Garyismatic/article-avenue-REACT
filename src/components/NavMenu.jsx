@@ -43,14 +43,16 @@ function NavMenu() {
   );
 
   return (
-    <div>
+    <>
+    <div className="nav-menu-button">
       <IconButton aria-label="navigation menu" onClick={handleClick}>
         <MenuIcon />
       </IconButton>
+    </div>
       <Drawer open={open} onClose={handleClick}>
         {Menu}
       </Drawer>
-    </div>
+    </>
   );
 }
 

@@ -5,10 +5,12 @@ import CommentIcon from "@mui/icons-material/Comment";
 import "./CSS-modules/articleActions.css";
 import { useState } from "react";
 import { updateArticleVotes } from "../Api";
+import { useNavigate } from "react-router-dom";
 
 function ArticleActions(props) {
   const { article, article_id } = props;
   const [voteCount, setVoteCount] = useState(0);
+  const navigate = useNavigate()
 
   const handleUpVote = () => {
     setVoteCount((currVoteCount) => {
@@ -32,6 +34,7 @@ function ArticleActions(props) {
     });
   };
 
+
   return (
     <>
       <div className="article-actions">
@@ -50,7 +53,7 @@ function ArticleActions(props) {
         </section>
         <section className="article-comments">
           <Button variant="outlined" endIcon={<CommentIcon />}>
-            Comments: {article.comment_count}
+           Add Comment
           </Button>
         </section>
       </div>

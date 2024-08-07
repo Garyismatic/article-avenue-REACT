@@ -31,9 +31,14 @@ function ArticleCard({ article }) {
           <Typography color="text.secondary">{article.topic}</Typography>
           <Typography color="text.secondary">Votes: {article.votes}</Typography>
         </div>
-        <Typography color="text.secondary">
-          {article.created_at.slice(0, 10)}
-        </Typography>
+        <div className="card-footer-right">
+          <Typography color="text.secondary">
+            {article.created_at.slice(0, 10)}
+          </Typography>
+          <Typography color="text.secondary">
+            comments: {article.comment_count}
+          </Typography>
+        </div>
       </section>
     </section>
   );
