@@ -11,14 +11,19 @@ import CommentInput from "./CommentInput";
 function ArticleActions(props) {
   const { article, article_id } = props;
   const [voteCount, setVoteCount] = useState(0);
+
   const [commentOpen, setCommentOpen] = useState(false)
   const navigate = useNavigate()
+
+  const [errMsg, setErrMsg] = useState("");
+
 
   const handleUpVote = () => {
     setVoteCount((currVoteCount) => {
       return currVoteCount + 1;
     });
     updateArticleVotes(article_id, 1).catch(() => {
+      setErrMsg("Vote Fail");
       setVoteCount((currVoteCount) => {
         return currVoteCount - 1;
       });
@@ -31,16 +36,19 @@ function ArticleActions(props) {
     });
     updateArticleVotes(article_id, -1).catch(() => {
       setVoteCount((currVoteCount) => {
+        setErrMsg("Vote Fail");
         return currVoteCount + 1;
       });
     });
   };
+
 
   const handleClick = () => {
     setCommentOpen((currCommentOpen) => {
       return !currCommentOpen
     })
   }
+
 
   return (
     <>
@@ -57,10 +65,13 @@ function ArticleActions(props) {
           >
             <ArrowCircleDownIcon />
           </IconButton>
+        <p className="err-msg">{errMsg}</p>
         </section>
         <section className="article-comments">
+
           <Button variant="outlined" endIcon={<CommentIcon />} onClick={handleClick}>
            Add Comment
+
           </Button>
         </section>
       </div>
