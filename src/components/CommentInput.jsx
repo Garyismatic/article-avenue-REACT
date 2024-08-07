@@ -35,6 +35,7 @@ function CommentInput(props) {
         })
         .catch((err) => { 
           setErrMsg("Error Comment Not Posted...");
+          setClicked(false)
         });
     }else{
         toggleDrawer()
