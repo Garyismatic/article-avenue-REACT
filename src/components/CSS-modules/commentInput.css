@@ -1,0 +1,13 @@
+.comment-input-field{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:20px;
+}
+
+.comment-err-msg{
+    color: red;
+    text-align: center;
+    padding: 5px;
+    margin-left: 15px;
+}
