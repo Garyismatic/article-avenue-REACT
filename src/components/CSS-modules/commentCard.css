@@ -12,5 +12,13 @@
 }
 
 .comment-votes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding:10px; 
+}
+
+.delete-err-msg{
+    color: red;
+    text-align: center;
 }
