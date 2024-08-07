@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: solid 2px lightgray;
+    border-bottom: solid 3px black;
     padding: 25px;
     background-color: blue;
     color: white;

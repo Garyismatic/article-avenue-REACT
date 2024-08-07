@@ -12,7 +12,7 @@ function ArticleComments(props) {
     getArticleComments(article_id).then((comments) => {
       setComments(comments);
     });
-  }, []);
+  }, [comments]);
 
   return (
     <>
