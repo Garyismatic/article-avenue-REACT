@@ -34,10 +34,6 @@ function ArticleActions(props) {
     });
   };
 
-  const handleClick = (event) => {
-    event.preventDefault()
-    navigate(`/articles/${article_id}/comments`)
-  }
 
   return (
     <>
@@ -56,8 +52,8 @@ function ArticleActions(props) {
           </IconButton>
         </section>
         <section className="article-comments">
-          <Button variant="outlined" endIcon={<CommentIcon />} onClick={handleClick}>
-            Comments: {article.comment_count}
+          <Button variant="outlined" endIcon={<CommentIcon />}>
+           Add Comment
           </Button>
         </section>
       </div>

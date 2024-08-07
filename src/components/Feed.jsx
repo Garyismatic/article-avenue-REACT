@@ -24,12 +24,6 @@ function Feed() {
           path="/articles/:article_id"
           element={<ArticleById article={article} setArticle={setArticle} />}
         />
-        <Route
-          path="/articles/:article_id/comments"
-          element={
-            <ArticleComments article={article} setArticle={setArticle} />
-          }
-        />
       </Routes>
     </>
   );

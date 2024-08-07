@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ArticleByIdHeader from "./ArticleByIdHeader";
 import ArticleActions from "./ArticleActions";
 import ArticleByIdContent from "./ArticleByIdContent";
+import ArticleComments from "./ArticleComments";
 
 function ArticleById(props) {
   const { article_id } = useParams();
@@ -21,6 +22,7 @@ function ArticleById(props) {
         <ArticleByIdHeader article={article} />
         <ArticleActions article={article} article_id={article_id} />
         <ArticleByIdContent article={article} />
+        <ArticleComments />
       </div>
     </>
   );

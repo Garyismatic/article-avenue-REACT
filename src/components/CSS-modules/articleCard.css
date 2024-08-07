@@ -9,3 +9,9 @@
     justify-content: space-between;
     margin: 8px 12px;
 }
+
+.card-footer-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
