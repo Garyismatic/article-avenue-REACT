@@ -10,13 +10,14 @@ import { useNavigate } from "react-router-dom";
 function ArticleActions(props) {
   const { article, article_id } = props;
   const [voteCount, setVoteCount] = useState(0);
-  const navigate = useNavigate()
+  const [errMsg, setErrMsg] = useState("");
 
   const handleUpVote = () => {
     setVoteCount((currVoteCount) => {
       return currVoteCount + 1;
     });
     updateArticleVotes(article_id, 1).catch(() => {
+      setErrMsg("Vote Fail");
       setVoteCount((currVoteCount) => {
         return currVoteCount - 1;
       });
@@ -29,11 +30,11 @@ function ArticleActions(props) {
     });
     updateArticleVotes(article_id, -1).catch(() => {
       setVoteCount((currVoteCount) => {
+        setErrMsg("Vote Fail");
         return currVoteCount + 1;
       });
     });
   };
-
 
   return (
     <>
@@ -50,10 +51,11 @@ function ArticleActions(props) {
           >
             <ArrowCircleDownIcon />
           </IconButton>
+        <p className="err-msg">{errMsg}</p>
         </section>
         <section className="article-comments">
           <Button variant="outlined" endIcon={<CommentIcon />}>
-           Add Comment
+            Add Comment
           </Button>
         </section>
       </div>
