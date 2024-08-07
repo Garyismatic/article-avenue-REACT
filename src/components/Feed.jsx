@@ -3,7 +3,6 @@ import Articles from "./Articles";
 import { getArticles } from "../Api";
 import { Routes, Route } from "react-router-dom";
 import ArticleById from "./ArticleById";
-import ArticleComments from "./ArticleComments";
 
 function Feed() {
   const [articles, setArticles] = useState([]);

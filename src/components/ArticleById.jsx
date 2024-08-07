@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArticleById } from "../Api";
 import { useEffect, useState } from "react";
 import ArticleByIdHeader from "./ArticleByIdHeader";

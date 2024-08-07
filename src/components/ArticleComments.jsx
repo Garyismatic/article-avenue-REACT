@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleComments, getArticleById } from "../Api";
+import { getArticleComments } from "../Api";
 import "./CSS-modules/articleComments.css";
 import CommentCard from "./CommentCard";
 
@@ -16,9 +16,11 @@ function ArticleComments(props) {
 
   return (
     <>
-      {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id} />;
-      })}
+      <section className="user-comments">
+        {comments.map((comment) => {
+          return <CommentCard comment={comment} key={comment.comment_id} />;
+        })}
+      </section>
     </>
   );
 }

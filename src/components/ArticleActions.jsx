@@ -13,7 +13,6 @@ function ArticleActions(props) {
   const [voteCount, setVoteCount] = useState(0);
 
   const [commentOpen, setCommentOpen] = useState(false)
-  const navigate = useNavigate()
 
   const [errMsg, setErrMsg] = useState("");
 
