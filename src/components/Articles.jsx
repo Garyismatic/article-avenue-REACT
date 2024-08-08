@@ -3,10 +3,10 @@ import ArticleSortOptions from "./ArticleSortOptions";
 import "./CSS-modules/articles.css";
 import Topics from "./Topics";
 
-function Articles({ articles }) {
+function Articles({ articles, topic, setTopic }) {
   return (
     <>
-      <Topics />
+      <Topics topic={topic} setTopic={setTopic} />
       <ArticleSortOptions />
       <section className="articles">
         {articles.map((article) => {
