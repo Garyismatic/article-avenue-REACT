@@ -1,18 +1,29 @@
 import { useState, useEffect } from "react";
-import { getTopics } from "../Api";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import "./CSS-modules/topics.css";
+import { useNavigate } from "react-router-dom";
+import { getTopics } from "../Api";
 
-function Topics() {
+function Topics({ topic, setTopic }) {
   const [topics, setTopics] = useState([]);
 
-  //   useEffect(() => {
-  //     getTopics().then((topics) => {
-  //       setTopics(topics);
-  //     });
-  //   }, []);
+  const navigate = useNavigate();
 
-  const handleSelect = () => {};
+  useEffect(() => {
+    getTopics().then((topics) => {
+      setTopics(topics);
+    });
+  }, []);
+
+  const handleSelect = (event) => {
+    if (event.target.value === "All Topics") {
+      setTopic("All Topics");
+      navigate("/articles");
+    } else {
+      setTopic(event.target.value);
+      navigate(`/articles?topic=${event.target.value}`);
+    }
+  };
 
   return (
     <>
@@ -22,11 +33,20 @@ function Topics() {
           <Select
             labelId="topics-label"
             id="topics"
-            value={""}
             label="topics"
             onChange={handleSelect}
+            value={topic}
           >
-            <MenuItem value={""}>TBC</MenuItem>
+            <MenuItem key="all-topics" value={"All Topics"}>
+              All Topics
+            </MenuItem>
+            {topics.map((topic) => {
+              return (
+                <MenuItem key={topic.slug} value={topic.slug}>
+                  {topic.slug}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
       </div>
