@@ -13,16 +13,18 @@ function Feed({ topic, setTopic }) {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const topicQuery = searchParams.get("topic");
+  const sortQuery = searchParams.get('sort_by')
+  const orderQuery = searchParams.get('order')
 
   useEffect(() => {
-    getArticles(topicQuery)
+    getArticles(topicQuery, sortQuery, orderQuery)
       .then((articlesArray) => {
         setArticles(articlesArray);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [topicQuery]);
+  }, [topicQuery, sortQuery, orderQuery]);
 
   if (isLoading) {
     return <Lottie animationData={loadingAnimation} loop={true} />;
