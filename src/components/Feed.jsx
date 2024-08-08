@@ -3,6 +3,7 @@ import Articles from "./Articles";
 import { getArticles } from "../Api";
 import { Routes, Route } from "react-router-dom";
 import ArticleById from "./ArticleById";
+import Topics from "./Topics";
 
 function Feed() {
   const [articles, setArticles] = useState([]);
@@ -18,7 +19,6 @@ function Feed() {
     <>
       <Routes>
         <Route path="/" element={<Articles articles={articles} />} />
-        <Route path="/articles" element={<Articles articles={articles} />} />
         <Route
           path="/articles/:article_id"
           element={<ArticleById article={article} setArticle={setArticle} />}
