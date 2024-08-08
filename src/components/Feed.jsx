@@ -45,7 +45,14 @@ function Feed({ topic, setTopic }) {
         />
         <Route
           path="/articles/:article_id"
-          element={<ArticleById article={article} setArticle={setArticle} />}
+          element={
+            <ArticleById
+              article={article}
+              setArticle={setArticle}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
+          }
         />
       </Routes>
     </>
