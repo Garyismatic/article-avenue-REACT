@@ -11,7 +11,7 @@ import "./CSS-modules/articleSortOptions.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ArticleSortOptions() {
+function ArticleSortOptions({topic}) {
   const sortOptions = ["Date", "Comments", "Votes"];
   const [sortBy, setSortBy] = useState("Date");
   const [sort, setSort] = useState("created_at");
@@ -33,7 +33,9 @@ function ArticleSortOptions() {
   };
 
   useEffect(() => {
-    if(sort) { 
+    if(topic) { 
+      navigate(`/articles?topic=${topic}&sort_by=${sort}&order=${order}`)
+    }else{
       navigate(`/articles?sort_by=${sort}&order=${order}`)
     }
 

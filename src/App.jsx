@@ -3,7 +3,7 @@ import Feed from "./components/Feed";
 import { useState } from "react";
 
 function App() {
-  const [topic, setTopic] = useState("All Topics");
+  const [topic, setTopic] = useState("");
 
   return (
     <>
