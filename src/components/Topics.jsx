@@ -17,7 +17,7 @@ function Topics({ topic, setTopic }) {
 
   const handleSelect = (event) => {
     if (event.target.value === "All Topics") {
-      setTopic("All Topics");
+      setTopic("");
       navigate("/articles");
     } else {
       setTopic(event.target.value);

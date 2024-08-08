@@ -8,11 +8,42 @@ import {
   Switch,
 } from "@mui/material";
 import "./CSS-modules/articleSortOptions.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ArticleSortOptions() {
-  const handleSelect = () => {};
+function ArticleSortOptions({topic}) {
+  const sortOptions = ["Date", "Comments", "Votes"];
+  const [sortBy, setSortBy] = useState("Date");
+  const [sort, setSort] = useState("created_at");
+  const [order, setOrder] = useState('desc')
+  const navigate = useNavigate();
 
-  const handleSwitch = () => {};
+  const handleSelect = (event) => {
+    setSortBy(event.target.value);
+    switch (event.target.value) {
+      case "Comments":
+        setSort("comment_count");
+        break;
+      case "Votes":
+        setSort("votes");
+        break;
+      default:
+        setSort("created_at");
+    }
+  };
+
+  useEffect(() => {
+    if(topic) { 
+      navigate(`/articles?topic=${topic}&sort_by=${sort}&order=${order}`)
+    }else{
+      navigate(`/articles?sort_by=${sort}&order=${order}`)
+    }
+
+  }, [sort, order]);
+
+  const handleSwitch = () => {
+    order === 'desc' ? setOrder('asc') : setOrder('desc')
+  };
 
   return (
     <>
@@ -22,11 +53,17 @@ function ArticleSortOptions() {
           <Select
             labelId="sort-by-label"
             id="sort-by"
-            value={""}
+            value={sortBy}
             label="Sort-By"
             onChange={handleSelect}
           >
-            <MenuItem value={""}>TBC</MenuItem>
+            {sortOptions.map((option) => {
+              return (
+                <MenuItem value={option} key={option}>
+                  {option}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
         <FormGroup>
