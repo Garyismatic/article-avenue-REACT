@@ -6,7 +6,7 @@ function NavMenu({ setTopic }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setTopic("All Topics");
+    setTopic("");
     navigate("/");
   };
 
