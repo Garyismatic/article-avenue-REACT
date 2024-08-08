@@ -14,9 +14,6 @@
     margin: 0 auto; 
 }
 
-.nav-menu-button{
+.home-button{
     position: absolute;
-    border-radius: 100px;
-    border: lightgray 1px solid;
-    background-color: white;
 }
