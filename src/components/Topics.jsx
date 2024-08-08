@@ -4,7 +4,7 @@ import "./CSS-modules/topics.css";
 import { useNavigate } from "react-router-dom";
 import { getTopics } from "../Api";
 
-function Topics({ topic, setTopic }) {
+function Topics({ topic, setTopic, setOrder, setSortBy, setSort }) {
   const [topics, setTopics] = useState([]);
 
   const navigate = useNavigate();
@@ -16,6 +16,9 @@ function Topics({ topic, setTopic }) {
   }, []);
 
   const handleSelect = (event) => {
+    setOrder("desc");
+    setSortBy("Date");
+    setSort("created_at");
     if (event.target.value === "All Topics") {
       setTopic("");
       navigate("/articles");

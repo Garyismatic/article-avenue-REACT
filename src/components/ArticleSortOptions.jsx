@@ -8,14 +8,12 @@ import {
   Switch,
 } from "@mui/material";
 import "./CSS-modules/articleSortOptions.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ArticleSortOptions({topic}) {
+function ArticleSortOptions({topic, order, setOrder, sortBy, setSortBy, sort, setSort}) {
   const sortOptions = ["Date", "Comments", "Votes"];
-  const [sortBy, setSortBy] = useState("Date");
-  const [sort, setSort] = useState("created_at");
-  const [order, setOrder] = useState('desc')
+  
   const navigate = useNavigate();
 
   const handleSelect = (event) => {
