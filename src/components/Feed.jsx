@@ -5,6 +5,7 @@ import { Routes, Route, useSearchParams } from "react-router-dom";
 import ArticleById from "./ArticleById";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../assets/Loading.json";
+import ErrorPage from "./ErrorPage";
 
 function Feed({ topic, setTopic }) {
   const [articles, setArticles] = useState([]);
@@ -13,13 +14,16 @@ function Feed({ topic, setTopic }) {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const topicQuery = searchParams.get("topic");
-  const sortQuery = searchParams.get('sort_by')
-  const orderQuery = searchParams.get('order')
+  const sortQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   useEffect(() => {
     getArticles(topicQuery, sortQuery, orderQuery)
       .then((articlesArray) => {
         setArticles(articlesArray);
+      })
+      .catch((err) => {
+        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -33,6 +37,7 @@ function Feed({ topic, setTopic }) {
   return (
     <>
       <Routes>
+        <Route path="*" element={<ErrorPage />} />
         <Route
           path="/"
           element={

@@ -13,7 +13,7 @@ export const getArticles = (topic, sort_by, order) => {
 export const getArticleById = (article_id) => {
   return api.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;
-  });
+  })
 };
 
 export const updateArticleVotes = (article_id, votes) => {
