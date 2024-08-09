@@ -4,11 +4,12 @@ import { useState } from "react";
 
 function App() {
   const [topic, setTopic] = useState("");
+  const [sort, setSort] = useState("created_at");
 
   return (
     <>
-      <Header setTopic={setTopic} />
-      <Feed topic={topic} setTopic={setTopic} />
+      <Header setTopic={setTopic} setSort={setSort} />
+      <Feed topic={topic} setTopic={setTopic} sort={sort} setSort={setSort} />
     </>
   );
 }

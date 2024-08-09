@@ -7,7 +7,7 @@ import Lottie from "lottie-react";
 import loadingAnimation from "../../assets/Loading.json";
 import ErrorPage from "./ErrorPage";
 
-function Feed({ topic, setTopic }) {
+function Feed({ topic, setTopic, sort, setSort }) {
   const [articles, setArticles] = useState([]);
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -18,12 +18,15 @@ function Feed({ topic, setTopic }) {
   const orderQuery = searchParams.get("order");
 
   useEffect(() => {
+    if (topicQuery !== null) {
+      setTopic(topicQuery);
+    }
+    if (sortQuery !== null) {
+      setSort(sortQuery);
+    }
     getArticles(topicQuery, sortQuery, orderQuery)
       .then((articlesArray) => {
         setArticles(articlesArray);
-      })
-      .catch((err) => {
-        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -41,13 +44,25 @@ function Feed({ topic, setTopic }) {
         <Route
           path="/"
           element={
-            <Articles articles={articles} topic={topic} setTopic={setTopic} />
+            <Articles
+              articles={articles}
+              topic={topic}
+              setTopic={setTopic}
+              sort={sort}
+              setSort={setSort}
+            />
           }
         />
         <Route
           path="/articles"
           element={
-            <Articles articles={articles} topic={topic} setTopic={setTopic} />
+            <Articles
+              articles={articles}
+              topic={topic}
+              setTopic={setTopic}
+              sort={sort}
+              setSort={setSort}
+            />
           }
         />
         <Route

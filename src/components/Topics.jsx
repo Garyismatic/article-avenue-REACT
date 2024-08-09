@@ -4,7 +4,7 @@ import "./CSS-modules/topics.css";
 import { useNavigate } from "react-router-dom";
 import { getTopics } from "../Api";
 
-function Topics({ topic, setTopic, setOrder, setSortBy, setSort }) {
+function Topics({ topic, setTopic, sort, order }) {
   const [topics, setTopics] = useState([]);
 
   const navigate = useNavigate();
@@ -13,15 +13,29 @@ function Topics({ topic, setTopic, setOrder, setSortBy, setSort }) {
     getTopics().then((topics) => {
       setTopics(topics);
     });
-  }, []);
+  }, [topics]);
 
   const handleSelect = (event) => {
-    setOrder("desc");
-    setSortBy("Date");
-    setSort("created_at");
-    if (event.target.value === "All Topics") {
+    if (event.target.value === "All Topics" && sort && order) {
+      setTopic("");
+      navigate(`/articles?sort_by=${sort}&order=${order}`);
+    } else if (event.target.value === "All Topics" && sort) {
+      setTopic("");
+      navigate(`/articles?sort_by=${sort}`);
+    } else if (event.target.value === "All Topics") {
       setTopic("");
       navigate("/articles");
+    } else if (sort && order) {
+      setTopic(event.target.value);
+      navigate(
+        `/articles?topic=${event.target.value}&sort_by=${sort}&order=${order}`
+      );
+    } else if (sort) {
+      setTopic(event.target.value);
+      navigate(`/articles?topic=${event.target.value}&sort_by=${sort}`);
+    } else if (order) {
+      setTopic(event.target.value);
+      navigate(`/articles?topic=${event.target.value}&order=${order}`);
     } else {
       setTopic(event.target.value);
       navigate(`/articles?topic=${event.target.value}`);
@@ -32,7 +46,7 @@ function Topics({ topic, setTopic, setOrder, setSortBy, setSort }) {
     <>
       <div className="topic-select">
         <FormControl sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="topics-label">Topics</InputLabel>
+          <InputLabel id="topics-label">Topic</InputLabel>
           <Select
             labelId="topics-label"
             id="topics"
@@ -46,7 +60,7 @@ function Topics({ topic, setTopic, setOrder, setSortBy, setSort }) {
             {topics.map((topic) => {
               return (
                 <MenuItem key={topic.slug} value={topic.slug}>
-                  {topic.slug}
+                  {topic.slug.toUpperCase()}
                 </MenuItem>
               );
             })}
