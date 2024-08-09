@@ -6,7 +6,7 @@ function Header({ setTopic, setSort }) {
     <>
       <section className="page-header">
         <HomeButton setTopic={setTopic} setSort={setSort} />
-        <h1 className="header-title">NC - NEWS</h1>
+        <h1 className="header-title">BLUE - NEWS</h1>
       </section>
     </>
   );
