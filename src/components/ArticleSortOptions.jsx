@@ -8,40 +8,38 @@ import {
   Switch,
 } from "@mui/material";
 import "./CSS-modules/articleSortOptions.css";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-function ArticleSortOptions({topic, order, setOrder, sortBy, setSortBy, sort, setSort}) {
-  const sortOptions = ["Date", "Comments", "Votes"];
-  
+function ArticleSortOptions({ topic, order, setOrder, sort, setSort }) {
   const navigate = useNavigate();
 
   const handleSelect = (event) => {
-    setSortBy(event.target.value);
-    switch (event.target.value) {
-      case "Comments":
-        setSort("comment_count");
-        break;
-      case "Votes":
-        setSort("votes");
-        break;
-      default:
-        setSort("created_at");
+    setSort(event.target.value);
+    if (topic) {
+      navigate(
+        `/articles?topic=${topic}&sort_by=${event.target.value}&order=${order}`
+      );
+    } else {
+      navigate(`/articles?sort_by=${event.target.value}&order=${order}`);
     }
+  };
+
+  const handleSwitch = (event) => {
+    event.target.checked ? setOrder("asc") : setOrder("desc");
   };
 
   useEffect(() => {
-    if(topic) { 
-      navigate(`/articles?topic=${topic}&sort_by=${sort}&order=${order}`)
-    }else{
-      navigate(`/articles?sort_by=${sort}&order=${order}`)
+    if (topic && sort) {
+      navigate(`/articles?topic=${topic}&sort_by=${sort}&order=${order}`);
+    } else if (topic) {
+      navigate(`/articles?topic=${topic}&order=${order}`);
+    } else if (sort) {
+      navigate(`/articles?sort_by=${sort}&order=${order}`);
+    } else if (order){
+      navigate(`/articles?order=${order}`);
     }
-
-  }, [sort, order]);
-
-  const handleSwitch = () => {
-    order === 'desc' ? setOrder('asc') : setOrder('desc')
-  };
+  }, [order]);
 
   return (
     <>
@@ -51,22 +49,24 @@ function ArticleSortOptions({topic, order, setOrder, sortBy, setSortBy, sort, se
           <Select
             labelId="sort-by-label"
             id="sort-by"
-            value={sortBy}
+            value={sort}
             label="Sort-By"
             onChange={handleSelect}
           >
-            {sortOptions.map((option) => {
-              return (
-                <MenuItem value={option} key={option}>
-                  {option}
-                </MenuItem>
-              );
-            })}
+            <MenuItem key={"created_at"} value={"created_at"}>
+              Date
+            </MenuItem>
+            <MenuItem key={"comment_count"} value={"comment_count"}>
+              Comments
+            </MenuItem>
+            <MenuItem key={"votes"} value={"votes"}>
+              Votes
+            </MenuItem>
           </Select>
         </FormControl>
         <FormGroup>
           <FormControlLabel
-            control={<Switch onChange={handleSwitch} />}
+            control={<Switch onChange={handleSwitch} defaultChecked={false} />}
             label="Order"
           />
         </FormGroup>

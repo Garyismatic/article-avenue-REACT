@@ -4,18 +4,22 @@ import "./CSS-modules/articles.css";
 import Topics from "./Topics";
 import { useState } from "react";
 
-function Articles({ articles, topic, setTopic }) {
-  const [sortBy, setSortBy] = useState("Date");
-  const [sort, setSort] = useState("created_at");
+function Articles({ articles, topic, setTopic, sort, setSort }) {
   const [order, setOrder] = useState("desc");
+
+  let topicIndicator = <></>
+
+  if(topic !== ''){
+   topicIndicator = <h3>{topic[0].toUpperCase() + topic.slice(1)}</h3>
+  }
+
   return (
     <>
       <Topics
         topic={topic}
         setTopic={setTopic}
-        setOrder={setOrder}
-        setSort={setSort}
-        setSortBy={setSortBy}
+        order={order}
+        sort={sort}
       />
       <ArticleSortOptions
         topic={topic}
@@ -23,9 +27,8 @@ function Articles({ articles, topic, setTopic }) {
         setOrder={setOrder}
         sort={sort}
         setSort={setSort}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
       />
+
       <section className="articles">
         {articles.map((article) => {
           return <ArticleCard article={article} key={article.article_id} />;
