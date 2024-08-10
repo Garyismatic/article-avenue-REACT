@@ -7,12 +7,6 @@ import { useState } from "react";
 function Articles({ articles, topic, setTopic, sort, setSort }) {
   const [order, setOrder] = useState("desc");
 
-  let topicIndicator = <></>
-
-  if(topic !== ''){
-   topicIndicator = <h3>{topic[0].toUpperCase() + topic.slice(1)}</h3>
-  }
-
   return (
     <>
       <Topics
