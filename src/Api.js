@@ -1,19 +1,21 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://nc-news-zah4.onrender.com/api",
+  baseURL: "https://article-avenue-api.onrender.com/api",
 });
 
 export const getArticles = (topic, sort_by, order) => {
-  return api.get("/articles", { params: { topic, sort_by, order } }).then(({ data }) => {
-    return data.articles;
-  });
+  return api
+    .get("/articles", { params: { topic, sort_by, order } })
+    .then(({ data }) => {
+      return data.articles;
+    });
 };
 
 export const getArticleById = (article_id) => {
   return api.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;
-  })
+  });
 };
 
 export const updateArticleVotes = (article_id, votes) => {
