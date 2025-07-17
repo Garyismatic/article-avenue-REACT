@@ -1,4 +1,5 @@
-Article Avenue — Frontend
+#Article Avenue — Frontend
+
 Welcome to the frontend for Article Avenue, a Reddit-style news application built with React.
 
 This single-page app connects to a custom-built RESTful API and allows users to view, filter, and interact with news articles and comments.
