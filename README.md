@@ -1,4 +1,4 @@
-##Article Avenue — Frontend
+Article Avenue — Frontend
 
 Welcome to the frontend for Article Avenue, a Reddit-style news application built with React.
 
